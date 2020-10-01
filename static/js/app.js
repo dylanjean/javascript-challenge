@@ -26,9 +26,15 @@ button.on("click", submit);
 function submit () {      
     var input = d3.select("#datetime"); 
     d3.event.preventDefault();
-    tbody.html("");
+    tbody.html("");  
 
-    var userInput = tableData.filter(item => item.datetime === input.property("value"));
+    function selectInput(item) {
+        return item.datetime === input.property("value");
+      }
+      
+      
+
+    var userInput = tableData.filter(selectInput);
     userInput.forEach((entry) => {
         var tr2 = tbody.append("tr");
         Object.entries(entry).forEach(data => {
